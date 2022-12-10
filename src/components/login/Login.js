@@ -7,11 +7,12 @@ import { useState } from "react";
 export default ({ user }) => {
     const userLogged = user;
     let fullName = userLogged.nome_completo;
-    fullName = fullName.split(' ');
     const numAccount = userLogged.num_conta;
-    const encryptNumAcc = numAccount.replace(numAccount[0] + numAccount[1] + numAccount[2], '***');
     const [secureEntry, setSecureEntry] = useState(true);
     const [eyeIcon, setEyeIcon] = useState('eye-off');
+
+    fullName = fullName.split(' ');
+    const encryptNumAcc = numAccount.replace(numAccount[0] + numAccount[1] + numAccount[2], '***');
 
     const changeSecureEntry = () => {
         if (!!secureEntry) {
