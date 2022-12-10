@@ -5,7 +5,7 @@ const users = {
     },
     fernanda: {
         nome_completo: 'Maria Fernanda Nunes Brito',
-        num_conta: '1234567-8'
+        num_conta: '8765432-1'
     }
 }
 

@@ -6,8 +6,8 @@ import { useState } from "react";
 
 export default ({ user }) => {
     const userLogged = user;
-    const compName = userLogged.nome_completo;
-    const fullName = compName.split(' ');
+    let fullName = userLogged.nome_completo;
+    fullName = fullName.split(' ');
     const numAccount = userLogged.num_conta;
     const encryptNumAcc = numAccount.replace(numAccount[0] + numAccount[1] + numAccount[2], '***');
     const [secureEntry, setSecureEntry] = useState(true);
@@ -90,8 +90,8 @@ const styles = StyleSheet.create({
     },
     initials: {
         backgroundColor: '#6B6C71',
-        padding: 10,
-        paddingVertical: 11,
+        padding: 11,
+        paddingVertical: 13,
         borderRadius: 200,
         color: '#fff',
         letterSpacing: 1,
