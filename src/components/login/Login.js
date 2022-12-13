@@ -5,14 +5,19 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import cores from './../cores';
 import { useEffect, useState } from "react";
 import BiometricLogin from "../biometricLogin/BiometricLogin";
+import users from './../users';
+import { useNavigation } from '@react-navigation/native';
 
-export default ({ user }) => {
+export default () => {
+    const [user, setUser] = useState(users.caio);
     const userLogged = user;
     let fullName = userLogged.nome_completo;
     const numAccount = userLogged.num_conta;
     const [secureEntry, setSecureEntry] = useState(true);
     const [eyeIcon, setEyeIcon] = useState('eye-off');
     const [marginFinger, setMarginFinger] = useState(80);
+    const [passConf, setPassConf] = useState('');
+    const navigation = useNavigation();
 
     fullName = fullName.split(' ');
     const encryptNumAcc = numAccount.replace(numAccount[0] + numAccount[1] + numAccount[2], '***');
@@ -47,12 +52,23 @@ export default ({ user }) => {
         }
     }, []);
 
+    const getUser = (user) => {
+        return setUser(user);
+    }
+
+    const validPass = () => {
+        console.log(passConf)
+        if(passConf === user.password){
+            navigation.navigate('Home', { user: user });
+        }
+    }
+
     return (
         <View style={styles.container}>
             <View>
-                <View style={{ alignItems: "flex-end" }}>
+                <TouchableOpacity activeOpacity={0.9} style={{ alignItems: "flex-end" }}>
                     <AntDesign name="questioncircleo" size={24} color="#FB7B05" />
-                </View>
+                </TouchableOpacity>
                 <View style={{ alignItems: "center" }}>
                     <Text style={styles.logo}>inter</Text>
                 </View>
@@ -67,23 +83,25 @@ export default ({ user }) => {
                                 <Text style={styles.numAccTxt}>{encryptNumAcc}</Text>
                             </View>
                         </View>
-                        <Text style={styles.changeAccTxt}>Trocar</Text>
+                        <TouchableOpacity onPress={() => navigation.navigate('ChangeAccount', {getUser: getUser })}>
+                            <Text style={styles.changeAccTxt}>Trocar</Text>
+                        </TouchableOpacity>
                     </View>
                 </View>
                 <View style={styles.passwordArea}>
                     <Text style={{ color: cores.greyTxt, fontWeight: '500' }}>Senha</Text>
-                    <TextInput secureTextEntry={secureEntry} style={styles.inpPassword} />
+                    <TextInput secureTextEntry={secureEntry} style={styles.inpPassword} value={passConf} onChangeText={setPassConf} />
                     <View style={styles.eyePass}>
                         <Feather name={eyeIcon} size={24} color={cores.orangeTxt} onPress={() => { changeSecureEntry(); changeEye(); }} />
                     </View>
                 </View>
-                <TouchableOpacity activeOpacity={0.8} style={styles.button}>
+                <TouchableOpacity activeOpacity={0.8} style={styles.button} onPress={validPass}>
                     <Text style={styles.btnTxt}>Entrar</Text>
                 </TouchableOpacity>
                 <View style={styles.fgtPass}>
                     <Text style={styles.fgtPassTxt}>Esqueci minha senha</Text>
                 </View>
-                <BiometricLogin marginFinger={marginFinger} />
+                <BiometricLogin marginFinger={marginFinger} navigation={navigation} />
                 <View style={[styles.footer, { marginTop: marginFinger }]}>
                     <Text style={styles.iSafe}>
                         <MaterialCommunityIcons name="shield-lock-outline" size={15} color={cores.orangeTxt} /> iSafe
@@ -99,7 +117,8 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         paddingTop: 20,
-        justifyContent: "space-between"
+        justifyContent: "space-between",
+        backgroundColor: '#fff'
     },
     logo: {
         alignItems: "center",

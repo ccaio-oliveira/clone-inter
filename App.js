@@ -1,12 +1,11 @@
 import { Platform, StatusBar, StyleSheet, View } from 'react-native';
-import Login from './src/components/login/Login';
-import users from './src/components/users';
+import Routes from './src/components/routes/Routes';
 
 export default function App() {
 
     return (
-        <View style={[styles.container]}>
-            <Login user={users.caio} />
+        <View style={styles.container}>
+            <Routes />
         </View>
     );
 }
