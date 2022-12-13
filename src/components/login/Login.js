@@ -157,7 +157,8 @@ const styles = StyleSheet.create({
     eyePass: {
         position: "absolute",
         right: 20,
-        top: 35
+        top: 35,
+        zIndex: 10
     },
     button: {
         backgroundColor: cores.orangeTxt,
