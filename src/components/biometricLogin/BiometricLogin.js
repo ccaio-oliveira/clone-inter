@@ -3,9 +3,8 @@ import { Ionicons } from '@expo/vector-icons';
 import cores from "../cores";
 import { useState, useEffect } from "react";
 import * as LocalAuthentication from 'expo-local-authentication';
-import { useNavigation } from "@react-navigation/native";
 
-export default ({marginFinger, navigation}) => {
+export default ({marginFinger, navigation, user}) => {
     const [isBiometricSupported, setIsBiometricSupported] = useState(false);
 
     useEffect(() => {
@@ -52,9 +51,10 @@ export default ({marginFinger, navigation}) => {
             disableDeviceFallback: true
         })
 
-        if(biometricAuth){
-            navigation.navigate('Home');
+        if(!!biometricAuth.success){
+            navigation.navigate('Home', {user: user});
         }
+
     }
 
     return (

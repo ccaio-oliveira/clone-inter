@@ -1,9 +1,10 @@
 import { ScrollView, StyleSheet, Text, View } from "react-native"
 
-export default ({navigation}) => {
+export default ({route}) => {
+    const { user } = route.params;
     return (
         <ScrollView style={styles.container}>
-            <Text>Home</Text>
+            <Text>{user.nome_completo}</Text>
         </ScrollView>
     )
 }

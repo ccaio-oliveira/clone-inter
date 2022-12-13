@@ -57,7 +57,6 @@ export default () => {
     }
 
     const validPass = () => {
-        console.log(passConf)
         if(passConf === user.password){
             navigation.navigate('Home', { user: user });
         }
@@ -101,7 +100,7 @@ export default () => {
                 <View style={styles.fgtPass}>
                     <Text style={styles.fgtPassTxt}>Esqueci minha senha</Text>
                 </View>
-                <BiometricLogin marginFinger={marginFinger} navigation={navigation} />
+                <BiometricLogin marginFinger={marginFinger} navigation={navigation} user={user} />
                 <View style={[styles.footer, { marginTop: marginFinger }]}>
                     <Text style={styles.iSafe}>
                         <MaterialCommunityIcons name="shield-lock-outline" size={15} color={cores.orangeTxt} /> iSafe
