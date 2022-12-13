@@ -1,21 +1,20 @@
-import { Platform, StatusBar, StyleSheet, View } from 'react-native';
-import Login from './src/components/login/Login';
-import users from './src/components/users';
+import { StatusBar } from 'expo-status-bar';
+import { StyleSheet, Text, View } from 'react-native';
 
 export default function App() {
-
-    return (
-        <View style={[styles.container]}>
-            <Login user={users.caio} />
-        </View>
-    );
+  return (
+    <View style={styles.container}>
+      <Text>Open up App.js to start working on your app!</Text>
+      <StatusBar style="auto" />
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
-    container: {
-        paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight: 0,
-        flex: 1,
-        backgroundColor: '#fff',
-        padding: 20
-    },
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
 });
