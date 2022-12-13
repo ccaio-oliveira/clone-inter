@@ -82,7 +82,7 @@ export default () => {
                                 <Text style={styles.numAccTxt}>{encryptNumAcc}</Text>
                             </View>
                         </View>
-                        <TouchableOpacity onPress={() => navigation.navigate('ChangeAccount', {getUser: getUser })}>
+                        <TouchableOpacity onPress={() => navigation.navigate('ChangeAccount', { getUser: getUser })}>
                             <Text style={styles.changeAccTxt}>Trocar</Text>
                         </TouchableOpacity>
                     </View>

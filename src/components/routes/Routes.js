@@ -1,8 +1,9 @@
 import { createNativeStackNavigator, CardStyleInterpolators } from "@react-navigation/native-stack";
-import { NavigationContainer } from "@react-navigation/native";
+import { DrawerActions, NavigationContainer } from "@react-navigation/native";
 import Login from "../login/Login";
 import Home from "../Home/Home";
 import ChangeAccount from "../changeAccount/ChangeAccount";
+import 'react-native-gesture-handler';
 
 const Stack = createNativeStackNavigator();
 
@@ -12,15 +13,7 @@ export default () => {
             <Stack.Navigator initialRouteName="Login" screenOptions={{ headerShown: false}}>
                 <Stack.Screen name="Login" component={Login} />
                 <Stack.Screen name="Home" component={Home} />
-                <Stack.Screen 
-                    name="ChangeAccount" 
-                    component={ChangeAccount} 
-                    screenOptions={{
-                        gestureEnable: true,
-                        gestureDirection: 'horizontal',
-                        cardStyleInterpolator: CardStyleInterpolators
-                    }} 
-                />
+                <Stack.Screen name="ChangeAccount" component={ChangeAccount} />
             </Stack.Navigator>
         </NavigationContainer>
     )
