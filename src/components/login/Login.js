@@ -69,7 +69,7 @@ export default () => {
                     <AntDesign name="questioncircleo" size={24} color="#FB7B05" />
                 </TouchableOpacity>
                 <View style={{ alignItems: "center" }}>
-                    <Text style={styles.logo}>inter</Text>
+                    <Text style={styles.logo}>ninkler</Text>
                 </View>
             </View>
             <View>
