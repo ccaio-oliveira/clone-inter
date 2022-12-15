@@ -66,7 +66,7 @@ export default () => {
         <View style={styles.container}>
             <View>
                 <TouchableOpacity activeOpacity={0.9} style={{ alignItems: "flex-end" }}>
-                    <AntDesign name="questioncircleo" size={24} color="#FB7B05" />
+                    <AntDesign name="questioncircleo" size={24} color={cores.darkGreen} />
                 </TouchableOpacity>
                 <View style={{ alignItems: "center" }}>
                     <Text style={styles.logo}>ninkler</Text>
@@ -91,7 +91,7 @@ export default () => {
                     <Text style={{ color: cores.greyTxt, fontWeight: '500' }}>Senha</Text>
                     <TextInput secureTextEntry={secureEntry} style={styles.inpPassword} value={passConf} onChangeText={setPassConf} />
                     <View style={styles.eyePass}>
-                        <Feather name={eyeIcon} size={24} color={cores.orangeTxt} onPress={() => { changeSecureEntry(); changeEye(); }} />
+                        <Feather name={eyeIcon} size={24} color={cores.darkGreen} onPress={() => { changeSecureEntry(); changeEye(); }} />
                     </View>
                 </View>
                 <TouchableOpacity activeOpacity={0.8} style={styles.button} onPress={validPass}>
@@ -103,7 +103,7 @@ export default () => {
                 <BiometricLogin marginFinger={marginFinger} navigation={navigation} user={user} />
                 <View style={[styles.footer, { marginTop: marginFinger }]}>
                     <Text style={styles.iSafe}>
-                        <MaterialCommunityIcons name="shield-lock-outline" size={15} color={cores.orangeTxt} /> iSafe
+                        <MaterialCommunityIcons name="shield-lock-outline" size={15} color={cores.darkGreen} /> iSafe
                     </Text>
                     <Text style={styles.changeAccTxt}>Trocar ou abrir conta</Text>
                 </View>
@@ -122,7 +122,7 @@ const styles = StyleSheet.create({
     logo: {
         alignItems: "center",
         fontSize: 45,
-        color: cores.orangeTxt,
+        color: cores.darkGreen,
         fontWeight: "bold",
         paddingTop: 10
     },
@@ -158,7 +158,7 @@ const styles = StyleSheet.create({
         fontWeight: "bold"
     },
     changeAccTxt: {
-        color: cores.orangeTxt,
+        color: cores.darkGreen,
         fontWeight: "bold",
         fontSize: 14
     },
@@ -179,7 +179,7 @@ const styles = StyleSheet.create({
         zIndex: 10
     },
     button: {
-        backgroundColor: cores.orangeTxt,
+        backgroundColor: cores.darkGreen,
         color: '#fff',
         alignItems: "center",
         padding: 13,
@@ -195,7 +195,7 @@ const styles = StyleSheet.create({
         marginTop: 32,
     },
     fgtPassTxt: {
-        color: cores.orangeTxt,
+        color: cores.darkGreen,
         fontWeight: "bold"
     },
     footer: {
@@ -205,7 +205,7 @@ const styles = StyleSheet.create({
     iSafe: {
         alignContent: "center",
         justifyContent: "center",
-        color: cores.orangeTxt,
+        color: cores.darkGreen,
         fontWeight: "bold"
     }
 })

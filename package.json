@@ -9,10 +9,12 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@react-native-firebase/app": "^16.4.6",
     "@react-native-masked-view/masked-view": "^0.2.8",
     "@react-navigation/native": "^6.1.1",
     "@react-navigation/native-stack": "^6.9.6",
     "expo": "~47.0.8",
+    "expo-dev-client": "~2.0.1",
     "expo-local-authentication": "^13.0.2",
     "expo-status-bar": "~1.4.2",
     "firebase": "^9.15.0",

@@ -7,6 +7,35 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:73383540461:android:cabe0fbba1042aa362fee4",
+        "android_client_info": {
+          "package_name": "com.company"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "73383540461-0nlm8trivh1us5g4pcl5nptjm20tjt8e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBuSa_TGlfNNLXQuId9dfHbY2b3FrMTn3w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "73383540461-0nlm8trivh1us5g4pcl5nptjm20tjt8e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:73383540461:android:5e9616c185b1c23862fee4",
         "android_client_info": {
           "package_name": "com.ninkler"
@@ -35,5 +64,5 @@
       }
     }
   ],
-  "configuration_version": "1"  
+  "configuration_version": "1"
 }

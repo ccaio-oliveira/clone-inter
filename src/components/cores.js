@@ -1,5 +1,5 @@
 const cores = {
-    orangeTxt: '#FB7B05',
+    darkGreen: '#0B610B',
     greyTxt: '#6B6C71'
 }
 

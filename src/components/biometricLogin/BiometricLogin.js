@@ -59,8 +59,8 @@ export default ({marginFinger, navigation, user}) => {
 
     return (
         <TouchableOpacity style={[styles.fingerLogin, { marginTop: marginFinger }]} onPress={handleBiometricAuth}>
-            <Ionicons name="finger-print-sharp" size={34} color={cores.orangeTxt} />
-            <Text style={{ color: cores.orangeTxt, width: 180, textAlign: "center", marginTop: 10 }}>
+            <Ionicons name="finger-print-sharp" size={34} color={cores.darkGreen} />
+            <Text style={{ color: cores.darkGreen, width: 180, textAlign: "center", marginTop: 10 }}>
                 Entre utilizando sua impressão digital
             </Text>
         </TouchableOpacity>

@@ -1,5 +1,4 @@
 import { Text, View, TouchableOpacity, StyleSheet } from "react-native"
-import { useState } from 'react';
 import users from './../users';
 import { useNavigation } from '@react-navigation/native';
 import { AntDesign } from '@expo/vector-icons';
@@ -37,7 +36,7 @@ export default ({ route }) => {
         <View style={styles.container}>
             <View style={styles.header}>
                 <TouchableOpacity onPress={() => navigation.goBack()}>
-                    <AntDesign name="arrowleft" size={24} color={cores.orangeTxt} />
+                    <AntDesign name="arrowleft" size={24} color={cores.darkGreen} />
                 </TouchableOpacity>
                 <Text style={{ fontWeight: "bold", fontSize: 18 }}>Contas</Text>
             </View>
@@ -52,7 +51,7 @@ export default ({ route }) => {
                             </View>
                         </View>
                         <TouchableOpacity style={{ zIndex: 10}}>
-                            <Feather name="trash" size={24} color={cores.orangeTxt} />
+                            <Feather name="trash" size={24} color={cores.darkGreen} />
                         </TouchableOpacity>
                     </TouchableOpacity>
                 ))}
@@ -60,7 +59,7 @@ export default ({ route }) => {
             <View style={styles.addAccount}>
                     <TouchableOpacity style={styles.loginNewAcc}>
                         <Text style={styles.loginNewAccTxt}>Entrar com outra conta</Text>
-                        <AntDesign name="arrowright" size={24} color={cores.orangeTxt} />
+                        <AntDesign name="arrowright" size={24} color={cores.darkGreen} />
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.addNewAcc}>
                         <Text style={styles.addNewAccTxt}>Abrir conta digital gratuita</Text>
@@ -118,18 +117,18 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         justifyContent: "space-between",
         borderWidth: 1,
-        borderColor: cores.orangeTxt,
+        borderColor: cores.darkGreen,
         padding: 10,
         borderRadius: 10
     },
     loginNewAccTxt: {
-        color: cores.orangeTxt,
+        color: cores.darkGreen,
         fontWeight: "bold"
     },
     addNewAcc: {
         flexDirection: "row",
         justifyContent: "space-between",
-        backgroundColor: cores.orangeTxt,
+        backgroundColor: cores.darkGreen,
         borderRadius: 10,
         padding: 10,
         marginTop: 20
