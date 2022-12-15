@@ -15,7 +15,7 @@ export default () => {
     const numAccount = userLogged.num_conta;
     const [secureEntry, setSecureEntry] = useState(true);
     const [eyeIcon, setEyeIcon] = useState('eye-off');
-    const [marginFinger, setMarginFinger] = useState(80);
+    const [marginFinger, setMarginFinger] = useState('18%');
     const [passConf, setPassConf] = useState('');
     const navigation = useNavigation();
 
@@ -82,7 +82,7 @@ export default () => {
                                 <Text style={styles.numAccTxt}>{encryptNumAcc}</Text>
                             </View>
                         </View>
-                        <TouchableOpacity onPress={() => navigation.navigate('ChangeAccount', { getUser: getUser })}>
+                        <TouchableOpacity onPress={() => navigation.navigate('ChangeAccount', { getUsers: getUser })}>
                             <Text style={styles.changeAccTxt}>Trocar</Text>
                         </TouchableOpacity>
                     </View>

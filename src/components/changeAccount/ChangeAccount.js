@@ -7,12 +7,12 @@ import { Feather } from '@expo/vector-icons';
 import cores from './../cores';
 
 export default ({ route }) => {
-    const { getUser } = route.params;
+    const { getUsers } = route.params;
     const navigation = useNavigation();
     const allUsers = Object.values(users);
 
     const userLog = (user) => {
-        getUser(user);
+        getUsers(user);
         navigation.navigate('Login');
     }
 
@@ -58,7 +58,14 @@ export default ({ route }) => {
                 ))}
             </View>
             <View style={styles.addAccount}>
-
+                    <TouchableOpacity style={styles.loginNewAcc}>
+                        <Text style={styles.loginNewAccTxt}>Entrar com outra conta</Text>
+                        <AntDesign name="arrowright" size={24} color={cores.orangeTxt} />
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.addNewAcc}>
+                        <Text style={styles.addNewAccTxt}>Abrir conta digital gratuita</Text>
+                        <AntDesign name="arrowright" size={24} color="#fff" />
+                    </TouchableOpacity>
             </View>
         </View>
     )
@@ -107,4 +114,28 @@ const styles = StyleSheet.create({
     numAccTxt: {
         fontWeight: "bold"
     },
+    loginNewAcc: {
+        flexDirection: "row",
+        justifyContent: "space-between",
+        borderWidth: 1,
+        borderColor: cores.orangeTxt,
+        padding: 10,
+        borderRadius: 10
+    },
+    loginNewAccTxt: {
+        color: cores.orangeTxt,
+        fontWeight: "bold"
+    },
+    addNewAcc: {
+        flexDirection: "row",
+        justifyContent: "space-between",
+        backgroundColor: cores.orangeTxt,
+        borderRadius: 10,
+        padding: 10,
+        marginTop: 20
+    },
+    addNewAccTxt: {
+        color: "#fff",
+        fontWeight: "bold"
+    }
 })
