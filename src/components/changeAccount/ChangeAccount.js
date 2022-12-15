@@ -61,7 +61,7 @@ export default ({ route }) => {
                         <Text style={styles.loginNewAccTxt}>Entrar com outra conta</Text>
                         <AntDesign name="arrowright" size={24} color={cores.darkGreen} />
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.addNewAcc}>
+                    <TouchableOpacity style={styles.addNewAcc} onPress={() => navigation.navigate('Welcome')}>
                         <Text style={styles.addNewAccTxt}>Abrir conta digital gratuita</Text>
                         <AntDesign name="arrowright" size={24} color="#fff" />
                     </TouchableOpacity>

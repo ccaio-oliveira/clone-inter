@@ -16,7 +16,7 @@ export default () => {
     const [secureEntry, setSecureEntry] = useState(true);
     const [eyeIcon, setEyeIcon] = useState('eye-off');
     const [marginFinger, setMarginFinger] = useState('18%');
-    const [passConf, setPassConf] = useState('');
+    const [password, setPassword] = useState('');
     const navigation = useNavigation();
 
     fullName = fullName.split(' ');
@@ -56,10 +56,8 @@ export default () => {
         return setUser(user);
     }
 
-    const validPass = () => {
-        if(passConf === user.password){
-            navigation.navigate('Home', { user: user });
-        }
+    const onLoginPress = () => {
+
     }
 
     return (
@@ -89,12 +87,12 @@ export default () => {
                 </View>
                 <View style={styles.passwordArea}>
                     <Text style={{ color: cores.greyTxt, fontWeight: '500' }}>Senha</Text>
-                    <TextInput secureTextEntry={secureEntry} style={styles.inpPassword} value={passConf} onChangeText={setPassConf} />
+                    <TextInput secureTextEntry={secureEntry} style={styles.inpPassword} value={password} onChangeText={setPassword} />
                     <View style={styles.eyePass}>
                         <Feather name={eyeIcon} size={24} color={cores.darkGreen} onPress={() => { changeSecureEntry(); changeEye(); }} />
                     </View>
                 </View>
-                <TouchableOpacity activeOpacity={0.8} style={styles.button} onPress={validPass}>
+                <TouchableOpacity activeOpacity={0.8} style={styles.button} onPress={() => onLoginPress}>
                     <Text style={styles.btnTxt}>Entrar</Text>
                 </TouchableOpacity>
                 <View style={styles.fgtPass}>
@@ -105,7 +103,9 @@ export default () => {
                     <Text style={styles.iSafe}>
                         <MaterialCommunityIcons name="shield-lock-outline" size={15} color={cores.darkGreen} /> iSafe
                     </Text>
-                    <Text style={styles.changeAccTxt}>Trocar ou abrir conta</Text>
+                    <TouchableOpacity onPress={() => navigation.navigate('ChangeAccount', { getUsers: getUser })}>
+                        <Text style={styles.changeAccTxt}>Trocar ou abrir conta</Text>
+                    </TouchableOpacity>
                 </View>
             </View>
         </View>

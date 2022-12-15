@@ -1,6 +1,6 @@
 node_modules/
 .expo/
-firebase.env
+.env
 dist/
 npm-debug.*
 *.jks
