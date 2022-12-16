@@ -10,6 +10,12 @@ export default () => {
     const [bornDate, setBornDate] = useState('');
     const navigation = useNavigation();
 
+    let checkName = fullName;
+    checkName = checkName.split(' ');
+    console.log(checkName)
+    const isDisabled = checkName <= 2 || bornDate === '' ? true : false;
+    const btnStyle = !isDisabled ? styles.contBtn : styles.disBtn;
+
     return (
         <View style={styles.container}>
             <View style={styles.header}>
@@ -18,7 +24,7 @@ export default () => {
                 </TouchableOpacity>
                 <Text style={{ fontWeight: "bold", fontSize: 18 }}>Boas-vindas!</Text>
             </View>
-            <View>
+            <View style={styles.content}>
                 <View>
                     <Text style={{ marginBottom: 5 }}>
                         Para começar, informe pra gente seu nome e sua data de nascimento.
@@ -47,6 +53,9 @@ export default () => {
                         </View>
                     </View>
                 </View>
+                <TouchableOpacity style={btnStyle} disabled={isDisabled}>
+                    <Text style={btnStyle === styles.contBtn ? { color: '#fff'} : {color: cores.greyTxt}}>Continuar</Text>
+                </TouchableOpacity>
             </View>
         </View>
     )
@@ -65,6 +74,10 @@ const styles = StyleSheet.create({
         width: '60%',
         marginBottom: '10%'
     },
+    content: {
+        flex: 1,
+        justifyContent: 'space-between'
+    },
     input: {
         backgroundColor: '#F5F6FA',
         padding: 15,
@@ -79,5 +92,20 @@ const styles = StyleSheet.create({
     },
     fullNameArea: {
         marginTop: 20
+    },
+    contBtn: {
+        backgroundColor: cores.darkGreen,
+        color: '#fff',
+        alignItems: "center",
+        padding: 13,
+        marginTop: 32,
+        borderRadius: 7
+    },
+    disBtn: {
+        backgroundColor: '#F5F6FA',
+        alignItems: "center",
+        padding: 13,
+        marginTop: 32,
+        borderRadius: 7
     }
 })
