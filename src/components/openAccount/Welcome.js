@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import { View, TouchableOpacity, StyleSheet, Text, TextInput } from 'react-native';
-import TextInputMask from 'react-native-text-input-mask';
+import { TextInputMask } from 'react-native-masked-text';
 import { AntDesign } from '@expo/vector-icons';
 import cores from '../cores';
+import { useNavigation } from '@react-navigation/native';
 
 export default () => {
     const [fullName, setFullName] = useState('');
     const [bornDate, setBornDate] = useState('');
+    const navigation = useNavigation();
 
     return (
         <View style={styles.container}>
@@ -31,16 +33,16 @@ export default () => {
                         </View>
                         <View style={styles.bornDateArea}>
                             <Text style={{ color: cores.greyTxt, fontWeight: '500' }}>Data de nascimento</Text>
-                            <TextInputMask 
+                            <TextInputMask
                                 style={styles.input} 
                                 placeholder="DD/MM/AAAA" 
                                 value={bornDate} 
                                 keyboardType='numeric' 
-                                onChangeText={(formatted, extracted) => {
-                                    console.log(formatted)
-                                    console.log(extracted)
-                                }} 
-                                mask={"[00]/[00]/[0000]/"}
+                                type={'datetime'}
+                                options={{ format: 'DD/MM/YYYY'}}
+                                onChangeText={text => {
+                                    setBornDate(text);
+                                }}
                             />
                         </View>
                     </View>

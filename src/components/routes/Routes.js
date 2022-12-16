@@ -16,18 +16,10 @@ export default () => {
     return (
         <NavigationContainer>
             <Stack.Navigator initialRouteName="Login" screenOptions={{ headerShown: false }}>
-                {user ? (
-                    <Stack.Screen name="Home">
-                        {props => <Home {...props} extraData={user} /> }
-                    </Stack.Screen>
-                ) : (
-                    <>
-                        <Stack.Screen name="Login" component={Login} />
-                        <Stack.Screen name="ChangeAccount" component={ChangeAccount} />
-                        <Stack.Screen name="Welcome" component={Welcome} />
-                    </>
-                )}
-
+                <Stack.Screen name="Home" component={Home} />
+                <Stack.Screen name="Login" component={Login} />
+                <Stack.Screen name="ChangeAccount" component={ChangeAccount} />
+                <Stack.Screen name="Welcome" component={Welcome} />
             </Stack.Navigator>
         </NavigationContainer>
     )
