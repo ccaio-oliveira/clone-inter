@@ -3,6 +3,7 @@ import { View, TouchableOpacity, StyleSheet, Text, TextInput } from 'react-nativ
 import { TextInputMask } from 'react-native-masked-text';
 import cores from '../../cores';
 import { useNavigation } from '@react-navigation/native';
+import HeaderNavigation from '../../headerNavigation/HeaderNavigation';
 
 export default () => {
     const [fullName, setFullName] = useState('');
@@ -14,6 +15,14 @@ export default () => {
     checkName = checkName.split(' ');
     const isDisabled = checkName <= 2 || bornDate === '' ? true : false;
     const btnStyle = !isDisabled ? styles.contBtn : styles.disBtn;
+
+    const saveNameAndBornDate = () => {
+        if(dataUser.fullName === undefined) {
+            setDataUser({ fullName, bornDate });
+        } else {
+            navigation.navigate('AddCPF', { dataUser: dataUser });
+        }
+    }
 
     return (
         <View style={styles.container}>
@@ -50,7 +59,7 @@ export default () => {
                 <TouchableOpacity
                     style={btnStyle}
                     disabled={isDisabled}
-                    onPress={() => { setDataUser({ fullName, bornDate }); navigation.navigate('AddCPF', { dataUser: dataUser }); }}
+                    onPress={() => saveNameAndBornDate()}
                 >
                     <Text style={btnStyle === styles.contBtn ? { color: '#fff' } : { color: cores.greyTxt }}>Continuar</Text>
                 </TouchableOpacity>
@@ -75,7 +84,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         paddingRight: 50,
         color: cores.greyTxt,
-        fontWeight: '300',
+        fontWeight: 'bold',
         marginTop: 5
     },
     bornDateArea: {

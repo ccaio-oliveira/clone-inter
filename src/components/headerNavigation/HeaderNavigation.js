@@ -1,6 +1,7 @@
 import { View, TouchableOpacity, Text, StyleSheet } from "react-native";
 import { AntDesign } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
+import cores from "../cores";
 
 export default ({page}) => {
     const navigation = useNavigation();
