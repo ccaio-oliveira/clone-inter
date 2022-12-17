@@ -3,12 +3,12 @@ import '@firebase/auth';
 import '@firebase/firestore';
 
 const firebaseConfig = {
-    apiKey: "AIzaSyBU5tErMni4N73_5B_HBxuT7hP1Eq4HYPQ",
-    authDomain: "ninkler-w.firebaseapp.com",
-    projectId: "ninkler-w",
-    storageBucket: "ninkler-w.appspot.com",
-    messagingSenderId: "389404432920",
-    appId: "1:389404432920:web:0338a0934fb53e9bbbc16d",
+    apiKey: "AIzaSyBuSa_TGlfNNLXQuId9dfHbY2b3FrMTn3w",
+    authDomain: "ninkler-b6ec1.firebaseapp.com",
+    projectId: "ninkler-b6ec1",
+    storageBucket: "ninkler-b6ec1.appspot.com",
+    messagingSenderId: "73383540461",
+    appId: "1:73383540461:android:cabe0fbba1042aa362fee4",
     measurementId: "G-DC1LZKXCW8"
 };
 
