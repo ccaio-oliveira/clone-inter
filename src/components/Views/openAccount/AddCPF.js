@@ -4,13 +4,16 @@ import HeaderNavigation from "../../headerNavigation/HeaderNavigation";
 import cores from './../../cores';
 import { useState } from 'react';
 import { TextInputMask } from 'react-native-masked-text';
+import BouncyCheckbox from "react-native-bouncy-checkbox";
 
 export default ({ route }) => {
     const { dataUser } = route.params;
     const [cpf, setCpf] = useState('');
     const [btnIsAble, setBtnIsAble] = useState(styles.disabledBtn);
     const [txtAble, setTxtAble] = useState(styles.txtDisabled);
-    const [inpCheckAble, setInpCheckAble] = useState(false);
+    const [inpCheckDisable, setInpCheckDisable] = useState(true);
+    const [isChecked, setIsChecked] = useState(false);
+    const [colorCheck, setColorCheck] = useState('#DCDCDC');
     const navigation = useNavigation();
     let fullName = dataUser.fullName;
     fullName = fullName.split(' ');
@@ -19,16 +22,17 @@ export default ({ route }) => {
         if (cpf.length !== 13) {
             setBtnIsAble(styles.disabledBtn);
             setTxtAble(styles.txtDisabled);
-            setInpCheckAble(false);
+            setInpCheckDisable(true);
+            setColorCheck('#DCDCDC');
         } else {
             setBtnIsAble(styles.abledBtn);
             setTxtAble(styles.txtAbled);
-            setInpCheckAble(true);
+            setInpCheckDisable(false);
+            setColorCheck(cores.darkGreen);
         }
-
     }
 
-    const styleInpCheck = inpCheckAble === true ? styles.inpCheckAb : styles.inpCheckDisab;
+    const styleInpCheck = inpCheckDisable === true ? styles.inpCheckAb : styles.inpCheckDisab;
 
     return (
         <View style={styles.container}>
@@ -54,13 +58,23 @@ export default ({ route }) => {
                     </View>
                 </View>
                 <View style={styles.footer}>
-                    <View>
+                    <View style={styles.confirmTerms}>
                         <Text style={{ fontWeight: "bold" }}>
                             Li e concordo com os Termos e Condições de <Text style={txtAble}>Abertura de Conta</Text>, com a <Text style={txtAble}>Política de Privacidade Inter </Text>
                             e com os Termos e condições de <Text style={txtAble}>Uso do Super App Inter</Text>.
                         </Text>
+                        <BouncyCheckbox 
+                            size={25}
+                            fillColor={colorCheck}
+                            unfillColor="#fff"
+                            innerIconStyle={{ borderWidth: 3, borderRadius: 8 }}
+                            disableText={true}
+                            isChecked={isChecked}
+                            disabled={inpCheckDisable}
+                            onPress={(isChecked) => { setIsChecked(isChecked)}}
+                        />
                     </View>
-                    <TouchableOpacity disabled={inpCheckAble} style={btnIsAble}>
+                    <TouchableOpacity disabled={inpCheckDisable} style={btnIsAble}>
                         <Text>Continuar</Text>
                     </TouchableOpacity>
                 </View>
@@ -96,5 +110,11 @@ const styles = StyleSheet.create({
     },
     txtAbled: {
         color: cores.darkGreen
+    },
+    confirmTerms: {
+        flexDirection: "row",
+        justifyContent: "space-between",
+        width: "90%",
+        alignItems: "center"
     }
 })
