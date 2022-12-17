@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet, TouchableOpacity, Alert} from "react-native"
 import { Ionicons } from '@expo/vector-icons';
-import cores from "../cores";
+import cores from "../../cores";
 import { useState, useEffect } from "react";
 import * as LocalAuthentication from 'expo-local-authentication';
 

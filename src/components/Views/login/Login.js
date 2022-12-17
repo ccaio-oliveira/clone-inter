@@ -2,10 +2,10 @@ import { Text, View, StyleSheet, TextInput, TouchableOpacity, Keyboard } from "r
 import { AntDesign } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import cores from './../cores';
+import cores from '../../cores';
 import { useEffect, useState } from "react";
 import BiometricLogin from "../biometricLogin/BiometricLogin";
-import users from './../users';
+import users from '../../users';
 import { useNavigation } from '@react-navigation/native';
 
 export default () => {

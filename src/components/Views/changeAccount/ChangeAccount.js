@@ -1,9 +1,10 @@
 import { Text, View, TouchableOpacity, StyleSheet } from "react-native"
-import users from './../users';
+import users from '../../users';
 import { useNavigation } from '@react-navigation/native';
 import { AntDesign } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
-import cores from './../cores';
+import cores from '../../cores';
+import HeaderNavigation from "../../headerNavigation/HeaderNavigation";
 
 export default ({ route }) => {
     const { getUsers } = route.params;
@@ -34,12 +35,7 @@ export default ({ route }) => {
 
     return (
         <View style={styles.container}>
-            <View style={styles.header}>
-                <TouchableOpacity onPress={() => navigation.goBack()}>
-                    <AntDesign name="arrowleft" size={24} color={cores.darkGreen} />
-                </TouchableOpacity>
-                <Text style={{ fontWeight: "bold", fontSize: 18 }}>Contas</Text>
-            </View>
+            <HeaderNavigation page="Contas" />
             <View style={styles.users}>
                 {allUsers.map(user => (
                     <TouchableOpacity onPress={() => userLog(user)} key={user.id} style={styles.chooseUser}>
@@ -76,12 +72,6 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         paddingTop: 10,
         justifyContent: "space-between"
-    },
-    header: {
-        flexDirection: "row",
-        alignItems: "center",
-        justifyContent: "space-between",
-        width: '60%'
     },
     chooseUser: {
         flexDirection: 'row',

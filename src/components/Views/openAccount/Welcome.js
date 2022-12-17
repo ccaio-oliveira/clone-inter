@@ -1,29 +1,23 @@
 import { useState } from 'react';
 import { View, TouchableOpacity, StyleSheet, Text, TextInput } from 'react-native';
 import { TextInputMask } from 'react-native-masked-text';
-import { AntDesign } from '@expo/vector-icons';
-import cores from '../cores';
+import cores from '../../cores';
 import { useNavigation } from '@react-navigation/native';
 
 export default () => {
     const [fullName, setFullName] = useState('');
     const [bornDate, setBornDate] = useState('');
+    const [dataUser, setDataUser] = useState({});
     const navigation = useNavigation();
 
     let checkName = fullName;
     checkName = checkName.split(' ');
-    console.log(checkName)
     const isDisabled = checkName <= 2 || bornDate === '' ? true : false;
     const btnStyle = !isDisabled ? styles.contBtn : styles.disBtn;
 
     return (
         <View style={styles.container}>
-            <View style={styles.header}>
-                <TouchableOpacity onPress={() => navigation.goBack()}>
-                    <AntDesign name="arrowleft" size={24} color={cores.darkGreen} />
-                </TouchableOpacity>
-                <Text style={{ fontWeight: "bold", fontSize: 18 }}>Boas-vindas!</Text>
-            </View>
+            <HeaderNavigation page="Boas-Vindas!" />
             <View style={styles.content}>
                 <View>
                     <Text style={{ marginBottom: 5 }}>
@@ -40,12 +34,12 @@ export default () => {
                         <View style={styles.bornDateArea}>
                             <Text style={{ color: cores.greyTxt, fontWeight: '500' }}>Data de nascimento</Text>
                             <TextInputMask
-                                style={styles.input} 
-                                placeholder="DD/MM/AAAA" 
-                                value={bornDate} 
-                                keyboardType='numeric' 
+                                style={styles.input}
+                                placeholder="DD/MM/AAAA"
+                                value={bornDate}
+                                keyboardType='numeric'
                                 type={'datetime'}
-                                options={{ format: 'DD/MM/YYYY'}}
+                                options={{ format: 'DD/MM/YYYY' }}
                                 onChangeText={text => {
                                     setBornDate(text);
                                 }}
@@ -53,8 +47,12 @@ export default () => {
                         </View>
                     </View>
                 </View>
-                <TouchableOpacity style={btnStyle} disabled={isDisabled}>
-                    <Text style={btnStyle === styles.contBtn ? { color: '#fff'} : {color: cores.greyTxt}}>Continuar</Text>
+                <TouchableOpacity
+                    style={btnStyle}
+                    disabled={isDisabled}
+                    onPress={() => { setDataUser({ fullName, bornDate }); navigation.navigate('AddCPF', { dataUser: dataUser }); }}
+                >
+                    <Text style={btnStyle === styles.contBtn ? { color: '#fff' } : { color: cores.greyTxt }}>Continuar</Text>
                 </TouchableOpacity>
             </View>
         </View>
@@ -66,13 +64,6 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#fff',
         paddingTop: 10,
-    },
-    header: {
-        flexDirection: "row",
-        alignItems: "center",
-        justifyContent: "space-between",
-        width: '60%',
-        marginBottom: '10%'
     },
     content: {
         flex: 1,
