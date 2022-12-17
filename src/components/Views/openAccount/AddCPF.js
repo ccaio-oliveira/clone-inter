@@ -7,13 +7,28 @@ import { TextInputMask } from 'react-native-masked-text';
 
 export default ({ route }) => {
     const { dataUser } = route.params;
-    const [cpf, setCpf] = useState(null);
+    const [cpf, setCpf] = useState('');
+    const [btnIsAble, setBtnIsAble] = useState(styles.disabledBtn);
+    const [txtAble, setTxtAble] = useState(styles.txtDisabled);
+    const [inpCheckAble, setInpCheckAble] = useState(false);
     const navigation = useNavigation();
     let fullName = dataUser.fullName;
     fullName = fullName.split(' ');
 
-    const cpfIsValid = cpf.length === 14 ? true : false;
-    const disableInp = cpfIsValid ? styles.disabledInp : styles.abledInp;
+    const cpfIsValid = () => {
+        if (cpf.length !== 13) {
+            setBtnIsAble(styles.disabledBtn);
+            setTxtAble(styles.txtDisabled);
+            setInpCheckAble(false);
+        } else {
+            setBtnIsAble(styles.abledBtn);
+            setTxtAble(styles.txtAbled);
+            setInpCheckAble(true);
+        }
+
+    }
+
+    const styleInpCheck = inpCheckAble === true ? styles.inpCheckAb : styles.inpCheckDisab;
 
     return (
         <View style={styles.container}>
@@ -33,17 +48,21 @@ export default ({ route }) => {
                             style={styles.input}
                             onChangeText={txt => {
                                 setCpf(txt);
+                                cpfIsValid();
                             }}
                         />
                     </View>
                 </View>
                 <View style={styles.footer}>
                     <View>
-                        <Text>
-                            Li e concordo com os Termos e Condições de <Text>Abertura de Conta</Text>, com a <Text>Política de Privacidade Inter </Text>
-                            e com os Termos e condições de <Text>uso do Super App Inter</Text>.
+                        <Text style={{ fontWeight: "bold" }}>
+                            Li e concordo com os Termos e Condições de <Text style={txtAble}>Abertura de Conta</Text>, com a <Text style={txtAble}>Política de Privacidade Inter </Text>
+                            e com os Termos e condições de <Text style={txtAble}>Uso do Super App Inter</Text>.
                         </Text>
                     </View>
+                    <TouchableOpacity disabled={inpCheckAble} style={btnIsAble}>
+                        <Text>Continuar</Text>
+                    </TouchableOpacity>
                 </View>
             </View>
         </View>
@@ -72,4 +91,10 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         marginTop: 5
     },
+    txtDisabled: {
+        color: '#DCDCDC',
+    },
+    txtAbled: {
+        color: cores.darkGreen
+    }
 })

@@ -4,7 +4,7 @@ import '@firebase/firestore';
 
 const firebaseConfig = {
     apiKey: "AIzaSyBuSa_TGlfNNLXQuId9dfHbY2b3FrMTn3w",
-    authDomain: "ninkler-b6ec1.firebaseapp.com",
+    authDomain: "https://ninkler-b6ec1-default-rtdb.firebaseio.com/",
     projectId: "ninkler-b6ec1",
     storageBucket: "ninkler-b6ec1.appspot.com",
     messagingSenderId: "73383540461",
