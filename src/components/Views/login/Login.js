@@ -57,7 +57,12 @@ export default () => {
     }
 
     const onLoginPress = () => {
-
+        if(password !== userLogged.password){
+            console.log(password)
+        } else {
+            
+            navigation.navigate('Home', {user: user});
+        }
     }
 
     return (
@@ -92,7 +97,7 @@ export default () => {
                         <Feather name={eyeIcon} size={24} color={cores.darkGreen} onPress={() => { changeSecureEntry(); changeEye(); }} />
                     </View>
                 </View>
-                <TouchableOpacity activeOpacity={0.8} style={styles.button} onPress={() => onLoginPress}>
+                <TouchableOpacity activeOpacity={0.8} style={styles.button} onPress={onLoginPress}>
                     <Text style={styles.btnTxt}>Entrar</Text>
                 </TouchableOpacity>
                 <View style={styles.fgtPass}>
