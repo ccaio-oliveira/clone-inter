@@ -8,8 +8,8 @@ import BouncyCheckbox from "react-native-bouncy-checkbox";
 
 export default ({ route }) => {
     const { dataUser } = route.params;
+    const [user, setUser] = useState(dataUser);
     const [cpf, setCpf] = useState('');
-    const [btnIsAble, setBtnIsAble] = useState(styles.disabledBtn);
     const [txtAble, setTxtAble] = useState(styles.txtDisabled);
     const [inpCheckDisable, setInpCheckDisable] = useState(true);
     const [isChecked, setIsChecked] = useState(false);
@@ -20,19 +20,26 @@ export default ({ route }) => {
 
     const cpfIsValid = () => {
         if (cpf.length !== 13) {
-            setBtnIsAble(styles.disabledBtn);
             setTxtAble(styles.txtDisabled);
             setInpCheckDisable(true);
             setColorCheck('#DCDCDC');
         } else {
-            setBtnIsAble(styles.abledBtn);
             setTxtAble(styles.txtAbled);
             setInpCheckDisable(false);
             setColorCheck(cores.darkGreen);
         }
     }
 
-    const styleInpCheck = inpCheckDisable === true ? styles.inpCheckAb : styles.inpCheckDisab;
+    const btnIsAble = isChecked === true ? styles.abledBtn : styles.disabledBtn;
+    const txtColor = isChecked === true ? '#fff' : '#000';
+
+    const saveCPF = () => {
+        setUser({
+            ...user,
+            cpf: cpf
+        })
+        navigation.navigate('Password', {dataUser: user});
+    }
 
     return (
         <View style={styles.container}>
@@ -74,8 +81,8 @@ export default ({ route }) => {
                             onPress={(isChecked) => { setIsChecked(isChecked)}}
                         />
                     </View>
-                    <TouchableOpacity disabled={inpCheckDisable} style={btnIsAble}>
-                        <Text>Continuar</Text>
+                    <TouchableOpacity disabled={inpCheckDisable} style={btnIsAble} onPress={() => saveCPF()}>
+                        <Text style={{ fontWeight: "bold", color: txtColor }}>Continuar</Text>
                     </TouchableOpacity>
                 </View>
             </View>
@@ -116,5 +123,22 @@ const styles = StyleSheet.create({
         justifyContent: "space-between",
         width: "90%",
         alignItems: "center"
+    },
+    disabledBtn: {
+        width: '100%',
+        alignItems: "center",
+        backgroundColor: '#DCDCDC',
+        borderRadius: 10,
+        padding: 10,
+        marginTop: 20,
+        opacity: 0.3
+    },
+    abledBtn: {
+        width: '100%',
+        alignItems: "center",
+        backgroundColor: cores.darkGreen,
+        borderRadius: 10,
+        padding: 10,
+        marginTop: 20,
     }
 })

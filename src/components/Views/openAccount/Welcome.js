@@ -17,8 +17,10 @@ export default () => {
     const btnStyle = !isDisabled ? styles.contBtn : styles.disBtn;
 
     const saveNameAndBornDate = () => {
+        let name = fullName;
+        name = name.trim('');
         if(dataUser.fullName === undefined) {
-            setDataUser({ fullName, bornDate });
+            setDataUser({ fullName: name, bornDate });
         } else {
             navigation.navigate('AddCPF', { dataUser: dataUser });
         }

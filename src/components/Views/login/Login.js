@@ -8,7 +8,8 @@ import BiometricLogin from "../biometricLogin/BiometricLogin";
 import users from '../../users';
 import { useNavigation } from '@react-navigation/native';
 
-export default () => {
+export default ({ route }) => {
+    // const { dataUser } = route.params;
     const [user, setUser] = useState(users.caio);
     const userLogged = user;
     let fullName = userLogged.nome_completo;
@@ -60,8 +61,7 @@ export default () => {
         if(password !== userLogged.password){
             console.log(password)
         } else {
-            
-            navigation.navigate('Home', {user: user});
+            navigation.navigate('Home', {user: dataUser});
         }
     }
 
